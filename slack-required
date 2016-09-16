@@ -1,0 +1,2 @@
+gcc >= 4.8.2
+glibc-solibs >= 2.17
