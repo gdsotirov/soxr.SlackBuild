@@ -19,14 +19,14 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack
 # 
-# $Id: soxr.SlackBuild,v 1.1 2016/09/16 14:18:39 gsotirov Exp $
+# $Id: soxr.SlackBuild,v 1.2 2016/09/22 16:36:14 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=soxr
 VERSION=0.1.2
-ARCH=${ARCH:-i486}
+ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
 TMP=${TMP:-/tmp}
@@ -63,7 +63,7 @@ cmake -LAH \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=${LIBDIRSUFFIX} \
-      -DDOC_INSTALL_DIR=/usr/doc/$NAME-$VERSION \
+      -DDOC_INSTALL_DIR=/usr/doc/${NAME}-${VERSION} \
       -DCMAKE_VERBOSE_MAKEFILE=TRUE .. || exit 5
 make V=1 -j4 || exit 6
 make DESTDIR=$PKG install || exit 7
@@ -85,11 +85,11 @@ install -m 644 $CWD/${NAME}.SlackBuild $SBDIR/${NAME}.SlackBuild
 
 # Assemble
 cd $PKG
-PKGNAME=$NAME-$VERSION-$ARCH-$BUILD$MYIN
-makepkg -l y -c n $PKG_DIR/$PKGNAME.txz
+PKGNAME=${NAME}-${VERSION}-${ARCH}-${BUILD}${MYIN}
+makepkg -l y -c n $PKG_DIR/${PKGNAME}.txz
 cd $PKG_DIR
-md5sum $PKGNAME.txz > $PKGNAME.txz.md5
-cat $PKG/install/slack-desc > $PKG_DIR/$PKGNAME.txt
+md5sum ${PKGNAME}.txz > ${PKGNAME}.txz.md5
+cat $PKG/install/slack-desc > $PKG_DIR/${PKGNAME}.txt
 
 # Cleanup (optionally)
 if [ "$1" == "--cleanup" ]; then
