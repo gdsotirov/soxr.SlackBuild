@@ -8,4 +8,4 @@ soxr: aliasing, and rejection level parameters are all configurable;
 soxr: alternatively, simple `preset' configurations may be selected.
 soxr: An experimental, variable-rate resampling mode of operation is also included.
 soxr:
-soxr: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+soxr: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
